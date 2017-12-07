@@ -21,10 +21,15 @@ module.exports = function(app, userModel) {
     // clientID     : process.env.FACEBOOK_CLIENT_ID,
     // clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
     // callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    clientID: 172378833356209,
-    clientSecret: '1a89f6a855ec268d1cf3d70b5cdab5bb',
-    // callbackURL:'http://localhost:3100/auth/facebook/callback'
-    callbackURL:'https://webdev-thasale-sushil.herokuapp.com/auth/facebook/callback'
+
+    // clientID: 172378833356209,
+    // clientSecret: '1a89f6a855ec268d1cf3d70b5cdab5bb',
+    // callbackURL:'https://webdev-thasale-sushil.herokuapp.com/auth/facebook/callback'
+
+    // localhost
+    clientID: 164490714296594,
+    clientSecret: 'ca90345ac27cb8a6b51e50330dcb5b68',
+    callbackURL:'http://localhost:3100/auth/facebook/callback'
   };
 
   passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -46,7 +51,8 @@ module.exports = function(app, userModel) {
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: "/login"
   }), function(req, res){
-    var url = "/user/" + req.user._id;
+    console.log("inside callback");
+    var url = "/user/" + req.user._id.toString();
     res.redirect(url);
   });
 
@@ -212,14 +218,18 @@ module.exports = function(app, userModel) {
   }
 
   function facebookStrategy(token, refreshToken, profile, done) {
+    console.log("inside facebookStrategy");
     userModel
       .findUserByFacebookId(profile.id)
       .then(function(user) {
           if(user) {
+            console.log("inside user exists" + user);
             return done(null, user);
           }
           else {
+            console.log("inside create new user");
             var names = profile.displayName.split(" ");
+            console.log("names " + names);
             var newFacebookUser = {
               firstName:  names[0],
               lastName:  names[1],
@@ -235,6 +245,7 @@ module.exports = function(app, userModel) {
               .then(function (user) {
                 return done(null, user);
               });
+            // next();
           }
         },
         function(err) {

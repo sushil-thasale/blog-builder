@@ -89,13 +89,24 @@ module.exports = function(app, WidgetModel){
     var myFile = req.file;
     var filename = myFile.filename;
 
-    // var imageWidget = WidgetModel.findWidgetById(widgetID)
-    //   .then(function (widget) {
-    //     return widget;
-    //   }, function (err) {
-    //     console.log(err);
-    //   });
-    //
+    return WidgetModel.findWidgetById(widgetID)
+      .then(function (imageWidget) {
+        imageWidget.url = "assets/uploads/" + filename;
+        // imageWidget.url = req.protocol + '://' + req.get('host') + "/assets/uploads/" + filename;
+
+        WidgetModel.updateWidget(widgetID, imageWidget)
+          .then(function (widget) {
+            res.json(widget);
+          }, function (err) {
+            res.send(err);
+          });
+
+        res.redirect(req.get('referrer'));
+        return widget;
+      }, function (err) {
+        console.log(err);
+      });
+
     // // imageWidget.url = "/assets/uploads/" + filename;
     // imageWidget.url = req.protocol + '://' + req.get('host') + "/assets/uploads/" + filename;
     //
@@ -105,8 +116,8 @@ module.exports = function(app, WidgetModel){
     //   }, function (err) {
     //     res.send(err);
     //   });
-
-    res.redirect(req.get('referrer'));
+    //
+    // res.redirect(req.get('referrer'));
   }
 
   function getFile(req, res) {
