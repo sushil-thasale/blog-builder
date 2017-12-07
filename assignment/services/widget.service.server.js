@@ -102,33 +102,9 @@ module.exports = function(app, WidgetModel){
           });
 
         res.redirect(req.get('referrer'));
-        return widget;
+        res.json(imageWidget);
       }, function (err) {
         console.log(err);
       });
-
-    // // imageWidget.url = "/assets/uploads/" + filename;
-    // imageWidget.url = req.protocol + '://' + req.get('host') + "/assets/uploads/" + filename;
-    //
-    // WidgetModel.updateWidget(widgetID, imageWidget)
-    //   .then(function (widget) {
-    //     res.json(widget);
-    //   }, function (err) {
-    //     res.send(err);
-    //   });
-    //
-    // res.redirect(req.get('referrer'));
   }
-
-  function getFile(req, res) {
-    var filename = req.params.filename;
-
-    fs.readdir(uploadPath,  function (err, files) {
-      for(var file in files) {
-        if (file === filename)
-          res.send(file);
-      }
-    });
-  }
-
 };
