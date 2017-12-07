@@ -12,7 +12,6 @@ module.exports = function(app, WidgetModel){
   app.delete("/api/widget/:widgetID", deleteWidget);
   app.put("/api/page/:pageID/widget", updateWidgetPosition);
   app.post("/api/upload", upload.single('myFile'), uploadImage);
-  app.get("/api/upload/:filename", getFile);
 
   function createWidget(req, res){
     var newWidget = req.body;
