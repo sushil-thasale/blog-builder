@@ -4,13 +4,16 @@ import { User } from '../components/user/user.model.client';
 import { environment } from '../../environments/environment';
 import { Http, Response, RequestOptions } from '@angular/http';
 import { SharedService } from './shared.service';
+import { Router } from '@angular/router';
 
 // injecting service into module
 @Injectable()
 
 export class UserService {
 
-  constructor(private http: Http, private sharedService: SharedService) { }
+  constructor(private http: Http,
+              private sharedService: SharedService,
+              private router: Router) { }
 
   api = {
     'createUser'   : this.createUser,
@@ -80,7 +83,7 @@ export class UserService {
             this.sharedService.user = user;
             return true;
           } else if (user === 0) {
-            // this.router.navigate(['/login']);
+            this.router.navigate(['/login']);
             return false;
           }
         }
