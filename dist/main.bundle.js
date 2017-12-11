@@ -177,12 +177,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_widget_widget_edit_widget_image_flickr_image_search_flickr_image_search_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_shared_service__ = __webpack_require__("../../../../../src/app/services/shared.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_auth_guard_service__ = __webpack_require__("../../../../../src/app/services/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__components_portfolio_portfolio_component__ = __webpack_require__("../../../../../src/app/components/portfolio/portfolio.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -259,7 +261,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_28__components_widget_widget_view_html_view_html_view_component__["a" /* HtmlViewComponent */],
             __WEBPACK_IMPORTED_MODULE_34__assignment_directives_sortable_directive__["a" /* SortableDirective */],
             __WEBPACK_IMPORTED_MODULE_37__components_widget_widget_view_text_view_text_view_component__["a" /* TextViewComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__components_widget_widget_edit_widget_image_flickr_image_search_flickr_image_search_component__["a" /* FlickrImageSearchComponent */]
+            __WEBPACK_IMPORTED_MODULE_38__components_widget_widget_edit_widget_image_flickr_image_search_flickr_image_search_component__["a" /* FlickrImageSearchComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__components_portfolio_portfolio_component__["a" /* PortfolioComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -306,6 +309,8 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_widget_widget_edit_widget_edit_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-edit/widget-edit.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_widget_widget_list_widget_list_component__ = __webpack_require__("../../../../../src/app/components/widget/widget-list/widget-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_auth_guard_service__ = __webpack_require__("../../../../../src/app/services/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_portfolio_portfolio_component__ = __webpack_require__("../../../../../src/app/components/portfolio/portfolio.component.ts");
+
 
 
 
@@ -324,6 +329,7 @@ AppModule = __decorate([
 
 var APP_ROUTES = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__components_home_home_component__["a" /* HomeComponent */] },
+    { path: 'home', component: __WEBPACK_IMPORTED_MODULE_16__components_portfolio_portfolio_component__["a" /* PortfolioComponent */] },
     { path: 'test', component: __WEBPACK_IMPORTED_MODULE_2__components_test_test_component__["a" /* TestComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_3__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_5__components_user_register_register_component__["a" /* RegisterComponent */] },
@@ -788,6 +794,67 @@ var Page = (function () {
 }());
 
 //# sourceMappingURL=page.model.client.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/portfolio/portfolio.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/portfolio/portfolio.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Navigation -->\n<nav class=\"navbar navbar-default navbar-fixed-top topnav\" role=\"navigation\">\n  <div class=\"container topnav\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <ul class=\"nav navbar-nav navbar-left\">\n        <li>\n          <a class=\"page-scroll\" href=\"#\">Home</a>\n        </li>\n      </ul>\n    </div>\n    <!-- Collect the nav links, forms, and other content for toggling -->\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav navbar-right\">\n        <li>\n          <a class=\"page-scroll\" href=\"#about\">About</a>\n        </li>\n        <li>\n          <a class=\"page-scroll\" href=\"#projects\">Projects</a>\n        </li>\n        <li>\n          <a class=\"page-scroll\" href=\"#assignment\">Assignment</a>\n        </li>\n        <li>\n          <a class=\"page-scroll\" href=\"#contact\">Contact</a>\n        </li>\n      </ul>\n    </div>\n    <!-- /.navbar-collapse -->\n  </div>\n  <!-- /.container -->\n</nav>\n\n\n<!-- Header -->\n<a name=\"about\"></a>\n<div class=\"intro-header\">\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <div class=\"intro-message\">\n          <h1>Sushil Thasale</h1>\n          <h3>Masters in Computer Science</h3>\n          <h3>Northeastern University</h3>\n          <hr class=\"intro-divider\">\n          <ul class=\"list-inline intro-social-buttons\">\n            <li>\n              <a target=\"_blank\" href=\"https://github.com/sushil-thasale\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-github fa-fw\"></i> <span class=\"network-name\">Github</span></a>\n            </li>\n            <li>\n              <a target=\"_blank\" href=\"https://www.linkedin.com/in/sushilthasale/\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-linkedin fa-fw\"></i> <span class=\"network-name\">Linkedin</span></a>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n  </div>\n  <!-- /.container -->\n\n</div>\n<!-- /.intro-header -->\n\n<!-- Page Content -->\n\n<a  name=\"projects\"></a>\n<div class=\"content-section-a\">\n\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-5 col-sm-6\">\n        <hr class=\"section-heading-spacer\">\n        <div class=\"clearfix\"></div>\n        <a target=\"_blank\" href=\"http://soccer-360.herokuapp.com/\">\n          <h2 class=\"section-heading\">Soccer Application: <br>European Soccer-360</h2>\n        </a>\n        <p class=\"lead\">\n          Soccer-360 is a mobile-first, interactive, SPA developed using MEAN (Angular 4) stack. It allows user to find a common platform for sharing their interests in European Soccer. Users can view live scores, search for Leagues, Teams and Players and add them to their favorites! This website also allows users to follow other users with similar interests! It also enables the users to latest news!\n        </p>\n\n      </div>\n      <div class=\"col-lg-5 col-lg-offset-2 col-sm-6\">\n        <br/><br/><br/>\n        <div>\n          <img src=\"assets/uploads/project-image.jpg\">\n        </div>\n      </div>\n    </div>\n\n  </div>\n  <!-- /.container -->\n\n</div>\n<!-- /.content-section-a -->\n\n\n\n<!-- /.content-section-b -->\n\n<a name=\"assignment\"></a>\n<div class=\"content-section-b\">\n\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6\">\n        <hr class=\"section-heading-spacer\">\n        <div class=\"clearfix\"></div>\n        <a target=\"_blank\" href=\"https://webdev-thasale-sushil.herokuapp.com/login\">\n          <h2 class=\"section-heading\">Blog Builder</h2>\n        </a>\n        <p class=\"lead\">A Website that allows Developers to create and maintain their own blogs. A user can have multiple blogs with multiple pages in each blog website. He can design the pages by selecting different widgets and reorder them to design the page according to his liking.\n        </p></div>\n      <div class=\"col-lg-5 col-sm-pull-6  col-sm-6\">\n        <br/><br/>\n        <img class=\"img-responsive\" src=\"assets/uploads/assignment-image.jpg\" alt=\"\">\n      </div>\n    </div>\n\n  </div>\n  <!-- /.container -->\n\n</div>\n<!-- /.content-section-a -->\n\n<a  name=\"contact\"></a>\n<div class=\"banner\">\n\n  <div class=\"container\">\n\n    <div class=\"row\">\n      <div class=\"col-lg-6\">\n        <h2>Contact Details</h2>\n        <h4><span class=\"glyphicon glyphicon-envelope\" aria-hidden=\"true\"></span> <a target=\"_blank\" href=\"mailto:thasale.s@northeastern.edu\">thasale.s@northeastern.edu</a></h4>\n      </div>\n    </div>\n\n  </div>\n  <!-- /.container -->\n\n</div>\n<!-- /.banner -->\n\n<!-- Footer -->\n<footer>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <ul class=\"list-inline\">\n          <li>\n            <a href=\"#\">Home</a>\n          </li>\n          <li class=\"footer-menu-divider\">&sdot;</li>\n          <li>\n            <a href=\"#about\">About</a>\n          </li>\n          <li class=\"footer-menu-divider\">&sdot;</li>\n          <li>\n            <a href=\"#projects\">Projects</a>\n          </li>\n          <li class=\"footer-menu-divider\">&sdot;</li>\n          <li>\n            <a href=\"#contact\">Contact</a>\n          </li>\n        </ul>\n        <p class=\"copyright text-muted small\">Copyright &copy; Sushil. All Rights Reserved</p>\n      </div>\n    </div>\n  </div>\n</footer>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/portfolio/portfolio.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PortfolioComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PortfolioComponent = (function () {
+    function PortfolioComponent() {
+    }
+    PortfolioComponent.prototype.ngOnInit = function () {
+    };
+    return PortfolioComponent;
+}());
+PortfolioComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-portfolio',
+        template: __webpack_require__("../../../../../src/app/components/portfolio/portfolio.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/portfolio/portfolio.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], PortfolioComponent);
+
+//# sourceMappingURL=portfolio.component.js.map
 
 /***/ }),
 

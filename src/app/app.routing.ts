@@ -21,9 +21,11 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
 
 import { SharedService } from './services/shared.service';
 import { AuthGuard } from './services/auth-guard.service';
+import {PortfolioComponent} from "./components/portfolio/portfolio.component";
 
 const APP_ROUTES: Routes = [
   { path : '', component : HomeComponent},
+  { path : 'home', component: PortfolioComponent},
   { path : 'test', component: TestComponent},
   { path : 'login' , component: LoginComponent},
   { path : 'register' , component: RegisterComponent },

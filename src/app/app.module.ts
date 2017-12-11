@@ -45,6 +45,7 @@ import { FlickrImageSearchComponent } from './components/widget/widget-edit/widg
 
 import { SharedService } from './services/shared.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 @NgModule({
   // Declare components here
@@ -75,7 +76,8 @@ import { AuthGuard } from './services/auth-guard.service';
     HtmlViewComponent,
     SortableDirective,
     TextViewComponent,
-    FlickrImageSearchComponent
+    FlickrImageSearchComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
