@@ -49,7 +49,8 @@ export class ProfileComponent implements OnInit {
         this.userService.updateUser(this.userID, this.user)
           .subscribe(
             (user: User) => {
-              this.navigateToProfile();
+              this.ngOnInit();
+              // this.navigateToProfile();
             }, (error) => {
               this.errorFlag = true;
               this.errorMsg = 'Some problems with update!!';
