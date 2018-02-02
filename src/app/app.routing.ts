@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { ModuleWithProviders } from '@angular/core';
 import { TestComponent } from './components/test/test.component';
 
 import { LoginComponent } from './components/user/login/login.component';
@@ -19,13 +18,10 @@ import { WidgetChooserComponent } from './components/widget/widget-chooser/widge
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 
-import { SharedService } from './services/shared.service';
 import { AuthGuard } from './services/auth-guard.service';
-import {PortfolioComponent} from "./components/portfolio/portfolio.component";
 
 const APP_ROUTES: Routes = [
   { path : '', component : HomeComponent},
-  { path : 'home', component: PortfolioComponent},
   { path : 'test', component: TestComponent},
   { path : 'login' , component: LoginComponent},
   { path : 'register' , component: RegisterComponent },
