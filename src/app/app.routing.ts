@@ -19,6 +19,7 @@ import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 
 import { AuthGuard } from './services/auth-guard.service';
+// import { AuthGuard } from './services/auth-guard.service';
 
 const APP_ROUTES: Routes = [
   { path : '', component : HomeComponent},
