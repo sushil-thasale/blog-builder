@@ -10,29 +10,57 @@ module.exports = function(app, userModel) {
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);
 
-  // Implement Passport Local Strategy
-  var LocalStrategy = require('passport-local').Strategy
-  passport.use(new LocalStrategy(localStrategy));
-
-  // Implement PassportJS Facebook Strategy
-  var FacebookStrategy = require('passport-facebook').Strategy;
-
   var facebookConfig = {
     // clientID     : process.env.FACEBOOK_CLIENT_ID,
     // clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
     // callbackURL  : process.env.FACEBOOK_CALLBACK_URL
 
-    // clientID: 172378833356209,
-    // clientSecret: '1a89f6a855ec268d1cf3d70b5cdab5bb',
-    // callbackURL:'https://webdev-thasale-sushil.herokuapp.com/auth/facebook/callback'
-
-    // localhost
-    clientID: 164490714296594,
+    clientID: '164490714296594',
     clientSecret: 'ca90345ac27cb8a6b51e50330dcb5b68',
     callbackURL:'http://localhost:3100/auth/facebook/callback'
   };
 
-  passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+  var githubConfig = {
+    clientID: 'b69046c7637a8fd8a9d6',
+    clientSecret: 'ab465fdc455abe8d69beb4d31cabe9462400f7e5',
+    callbackURL:'http://localhost:3100/auth/github/callback'
+  };
+
+  // var linkedInConfig = {
+  //   clientID: '78pdk9jrxab12s',
+  //   clientSecret: 'uPhWHfCTgNExJcIB',
+  //   callbackURL:'http://localhost:3100/auth/linkedin/callback'
+  // };
+
+  // var googleConfig = {
+  //   clientID: 'b69046c7637a8fd8a9d6',
+  //   clientSecret: 'ab465fdc455abe8d69beb4d31cabe9462400f7e5',
+  //   callbackURL:'http://localhost:3100/auth/github/callback'
+  // };
+
+  // var twitterConfig = {
+  //   clientID: 'b69046c7637a8fd8a9d6',
+  //   clientSecret: 'ab465fdc455abe8d69beb4d31cabe9462400f7e5',
+  //   callbackURL:'http://localhost:3100/auth/github/callback'
+  // };
+
+
+  // Implement Passport Local Strategy
+  var LocalStrategy = require('passport-local').Strategy;
+  passport.use(new LocalStrategy(localStrategy));
+
+  // Implement PassportJS Facebook Strategy
+  var FacebookStrategy = require('passport-facebook').Strategy;
+  passport.use(new FacebookStrategy(facebookConfig, authStrategy));
+
+  // Implement PassportJS Github Strategy
+  var GitHubStrategy = require('passport-github2').Strategy;
+  passport.use(new GitHubStrategy(githubConfig, authStrategy));
+
+  // Implement PassportJS LinkedIn Strategy
+  // var LinkedInStrategy = require('passport-linkedin').Strategy;
+  // passport.use(new LinkedInStrategy(linkedInConfig, authStrategy));
+
 
   app.post("/api/user", createUser);
   app.get("/api/user", findUser);
@@ -45,16 +73,29 @@ module.exports = function(app, userModel) {
   app.post('/api/loggedIn', loggedIn);
 
   // route for facebook authentication and login
-  app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'user:email' ] }));
   // handle the callback after facebook has authenticated the user
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    failureRedirect: "/login"
-  }), function(req, res){
-    console.log("inside callback");
-    var url = "/user/" + req.user._id.toString();
-    res.redirect(url);
-  });
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+      var url = "http://localhost:4200/user/" + req.user._id.toString();
+      res.redirect(url);
+    });
+
+  // GitHub
+  app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
+  app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
+    function(req, res) {
+      var url = "http://localhost:4200/user/" + req.user._id.toString();
+      res.redirect(url);
+    });
+
+  // LinkedIn
+  // app.get('/auth/linkedin', passport.authenticate('linkedin', { scope: [ 'user:email' ] }));
+  // app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }),
+  //   function(req, res) {
+  //     var url = "http://localhost:4200/user/" + req.user._id.toString();
+  //     res.redirect(url);
+  //   });
 
   function createUser(req, res){
     var newUser = req.body;
@@ -217,35 +258,34 @@ module.exports = function(app, userModel) {
     }
   }
 
-  function facebookStrategy(token, refreshToken, profile, done) {
-    console.log("inside facebookStrategy");
+  function authStrategy(accessToken, refreshToken, profile, done) {
     userModel
       .findUserByFacebookId(profile.id)
       .then(function(user) {
           if(user) {
-            console.log("inside user exists" + user);
             return done(null, user);
           }
           else {
-            console.log("inside create new user");
             var names = profile.displayName.split(" ");
             console.log("names " + names);
+            console.log("names " + profile.emails);
             var newFacebookUser = {
               firstName:  names[0],
               lastName:  names[1],
               facebook: {
                 id:    profile.id,
-                token: token
+                token: accessToken
               },
               email: profile.emails[0].value,
               username: profile.emails[0].value
             };
+
             userModel
               .createUser(newFacebookUser)
               .then(function (user) {
+                console.log("new user created!");
                 return done(null, user);
               });
-            // next();
           }
         },
         function(err) {

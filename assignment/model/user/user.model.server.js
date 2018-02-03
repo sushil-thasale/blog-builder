@@ -17,6 +17,7 @@ module.exports = function () {
   };
 
   function createUser(user) {
+    console.log("inside create user model");
     return UserModel.create(user);
   }
 
