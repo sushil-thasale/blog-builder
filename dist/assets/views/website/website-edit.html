@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for making website for mobile-->
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/style.css"/>
+
+  <title>Website Edit</title>
+
+</head>
+
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="row container-fluid">
+
+    <!-- Header - Left Pane -->
+    <div class="col-sm-4 hidden-xs">
+
+      <div class="navbar-text pull-left my-header-left-margin">
+        <a href="../user/profile.html">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-text pull-right my-header-right-margin">
+        <a href="website-new.html">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          Websites
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Header - Right Pane -->
+    <div class="col-sm-8 col-xs-12">
+
+      <div class="navbar-text pull-left my-header-left-margin">
+        <a href="website-list.html">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </div>
+
+      <div class="navbar-text pull-right my-header-right-margin">
+        <a href="website-list.html">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+      </div>
+
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <Edit></Edit> Website
+        </a>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+
+<div class="row container-fluid">
+
+  <!-- Left Pane - Website List -->
+  <div class="col-sm-4 hidden-xs my-left-pane my-right-border">
+    <ul class="list-group">
+
+      <li class="list-group-item my-no-border">
+        <a href="../page/page-list.html" class="no-underline-hover">Address Book App</a>
+        <a href="#" class="pull-right">
+          <span class="glyphicon glyphicon-cog my-right-margin"></span>
+        </a>
+      </li>
+
+      <li class="list-group-item my-no-border">
+        <a href="../page/page-list.html" class="no-underline-hover">Blogger</a>
+        <a href="#" class="pull-right">
+          <span class="glyphicon glyphicon-cog my-right-margin"></span>
+        </a>
+      </li>
+
+      <li class="list-group-item my-no-border">
+        <a href="../page/page-list.html" class="no-underline-hover">Blogging App</a>
+        <a href="#" class="pull-right">
+          <span class="glyphicon glyphicon-cog my-right-margin"></span>
+        </a>
+      </li>
+
+      <li class="list-group-item my-no-border">
+        <a href="../page/page-list.html" class="no-underline-hover">Script testing App</a>
+        <a href="#" class="pull-right">
+          <span class="glyphicon glyphicon-cog my-right-margin"></span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Right Pane - Form -->
+  <div class="col-sm-8 col-xs-12 my-right-pane">
+    <form>
+
+      <div class="form-group">
+          <label for="website-name">Website Name</label>
+          <input type="text" id="website-name"
+                 class="form-control" value="Blogger"/>
+      </div>
+
+      <div class="form-group">
+        <label for="website-description">Description</label>
+        <textarea id="website-description" class="form-control span6"
+                  rows="5" placeholder="Description">Blogger is blog-publishing service that allows multi-user blogs with time-stamped entries. It was developed by Pyra Labs, which was bought by Google in 2003.
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <a href="website-list.html" class="btn btn-block btn-danger">
+          Delete
+        </a>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-footer navbar-text pull-right">
+      <a href="../user/profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+</body>
+</html>
