@@ -21,9 +21,15 @@ module.exports = function(app, userModel) {
   };
 
   var githubConfig = {
-    clientID: 'b69046c7637a8fd8a9d6',
-    clientSecret: 'ab465fdc455abe8d69beb4d31cabe9462400f7e5',
-    callbackURL:'http://localhost:3100/auth/github/callback'
+    // localhost - testing
+    // clientID: 'b69046c7637a8fd8a9d6',
+    // clientSecret: 'ab465fdc455abe8d69beb4d31cabe9462400f7e5',
+    // callbackURL:'http://localhost:3100/auth/github/callback'
+
+    // Heroku
+    clientID: '19e18dffd833faa37ac7',
+    clientSecret: 'e85775c684a31f2048c067837bd04148ba82ee51',
+    callbackURL:'https://blog-builder.herokuapp.com/auth/github/callback'
   };
 
   // var linkedInConfig = {
@@ -85,7 +91,9 @@ module.exports = function(app, userModel) {
   app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
   app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
     function(req, res) {
-      var url = "http://localhost:4200/user/" + req.user._id.toString();
+      var url = "https://blog-builder.herokuapp.com/user/" + req.user._id.toString();
+      // var url = "http://localhost:4200/user/" + req.user._id.toString();
+      // var url = req.protocol + '://' + req.get('host') + "/" + req.user._id.toString();
       res.redirect(url);
     });
 
