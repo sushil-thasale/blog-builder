@@ -15,9 +15,15 @@ module.exports = function(app, userModel) {
     // clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
     // callbackURL  : process.env.FACEBOOK_CALLBACK_URL
 
-    clientID: '164490714296594',
-    clientSecret: 'ca90345ac27cb8a6b51e50330dcb5b68',
-    callbackURL:'http://localhost:3100/auth/facebook/callback'
+    // heroku
+    clientID: '172378833356209',
+    clientSecret: '1a89f6a855ec268d1cf3d70b5cdab5bb',
+    callbackURL:'https://blog-builder.herokuapp.com/auth/facebook/callback'
+
+    // localhost
+    // clientID: '164490714296594',
+    // clientSecret: 'ca90345ac27cb8a6b51e50330dcb5b68',
+    // callbackURL:'http://localhost:3100/auth/facebook/callback'
   };
 
   var githubConfig = {
@@ -83,7 +89,7 @@ module.exports = function(app, userModel) {
   // handle the callback after facebook has authenticated the user
   app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
     function(req, res) {
-      var url = "http://localhost:4200/user/" + req.user._id.toString();
+      var url = "https://blog-builder.herokuapp.com/user/" + req.user._id.toString();
       res.redirect(url);
     });
 
